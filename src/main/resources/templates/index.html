@@ -16,24 +16,6 @@ Hello from Index
     <span th:text="${car}"></span>
 </div>
 
-<div>
-    <table>
-        <thead>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Salary</td>
-        </thead>
-        <tbody>
-        <tr th:each="employee : ${employeeList}">
-            <td th:text="${employee.id}"/>
-            <td th:text="${employee.getName()}"/>
-            <td th:text="${employee.salary}"/>
-        </tr>
-        </tbody>
-    </table>
-</div>
-
-
 <div class="container-fluid row col-8">
 
     <table class="table table-striped table-bordered">

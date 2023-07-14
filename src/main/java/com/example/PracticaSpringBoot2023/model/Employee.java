@@ -3,16 +3,18 @@ package com.example.PracticaSpringBoot2023.model;
 public class Employee {
 
     private int id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private int salary;
 
     public Employee() {
 
     }
 
-    public Employee(int id, String name, int salary) {
+    public Employee(int id, String firstName, String lastName, int salary) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.salary = salary;
     }
 
@@ -24,12 +26,20 @@ public class Employee {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getSalary() {
@@ -44,7 +54,7 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + firstName + '\'' +
                 ", salary=" + salary +
                 '}';
     }

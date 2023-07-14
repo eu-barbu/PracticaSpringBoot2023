@@ -34,8 +34,8 @@ public class HelloController {
     @GetMapping(value = "/employees")
     @ResponseBody
     public List<Employee> listEmployees() {
-        Employee e1 = new Employee(1, "George Popescu", 1500);
-        Employee e2 = new Employee(2, "Maria Georgescu", 1750);
+        Employee e1 = new Employee(1, "George", "Popescu", 1500);
+        Employee e2 = new Employee(2, "Maria", "Georgescu", 1750);
 
         return List.of(e1, e2); //same as defining a new ArrayList and adding elements to it.
     }
@@ -49,12 +49,6 @@ public class HelloController {
 
         List<String> carList = List.of("Dacia", "Ford", "Suzuki", "BMW");
         model.addAttribute("carList", carList);
-
-        Employee e1 = new Employee(1, "George Popescu", 1500);
-        Employee e2 = new Employee(2, "Maria Georgescu", 1750);
-
-        List<Employee> employeeList = List.of(e1, e2);
-        model.addAttribute("employeeList", employeeList);
 
         return "index";
     }

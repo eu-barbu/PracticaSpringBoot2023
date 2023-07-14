@@ -7,8 +7,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class EmployeeController {
+
+    @GetMapping(value = "/employeeOverview")
+    public String index(Model model) {
+        Employee e1 = new Employee(1, "George", "Popescu", 1500);
+        Employee e2 = new Employee(2, "Maria", "Georgescu", 1750);
+
+        List<Employee> employeeList = List.of(e1, e2);
+        model.addAttribute("employeeList", employeeList);
+
+        return "employeeOverview";
+    }
 
     @GetMapping(value = "/employeeForm")
     public String getEmployeeForm(Model model) {
@@ -21,4 +34,5 @@ public class EmployeeController {
         System.out.println(employee.toString());
         return null;
     }
+
 }
