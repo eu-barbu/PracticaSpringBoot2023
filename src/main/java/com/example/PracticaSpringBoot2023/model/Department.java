@@ -1,12 +1,25 @@
 package com.example.PracticaSpringBoot2023.model;
 
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+@Table(name = "t_department")
 public class Department {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "code")
     private String code;
 
+    @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employeeList;
 
     public Department() {
     }
@@ -39,5 +52,17 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+
+    public int getNumberOfEmployees() {
+        return employeeList.size();
     }
 }

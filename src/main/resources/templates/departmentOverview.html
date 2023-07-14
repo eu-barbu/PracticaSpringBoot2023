@@ -19,12 +19,14 @@
             <th>Id</th>
             <th>Code</th>
             <th>Name</th>
+            <th>Number of employees</th>
             </thead>
             <tbody>
             <tr th:each="department : ${departmentList}">
                 <td th:text="${department.id}"/>
                 <td th:text="${department.code}"/>
                 <td th:text="${department.name}"/>
+                <td th:text="${department.getNumberOfEmployees()}"/>
             </tr>
             </tbody>
         </table>

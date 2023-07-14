@@ -20,6 +20,8 @@
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Salary</th>
+            <th>Dep. code</th>
+            <th>Dep. name</th>
             </thead>
             <tbody>
             <tr th:each="employee : ${employeeList}">
@@ -27,6 +29,8 @@
                 <td th:text="${employee.firstName}"/>
                 <td th:text="${employee.lastName}"/>
                 <td th:text="${employee.salary}"/>
+                <td th:text="${employee.department.code}"/>
+                <td th:text="${employee.getDepartmentName()}"/>
             </tr>
             </tbody>
         </table>

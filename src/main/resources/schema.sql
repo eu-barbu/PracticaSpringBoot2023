@@ -12,5 +12,7 @@ create table t_employee
     firstname      varchar(50),
     lastname       varchar(50),
     monthly_salary integer,
-    primary key (id)
+    id_department  integer,
+    primary key (id),
+    foreign key (id_department) references t_department (id)
 );

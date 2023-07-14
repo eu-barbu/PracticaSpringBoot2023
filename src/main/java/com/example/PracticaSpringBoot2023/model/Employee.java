@@ -1,11 +1,27 @@
 package com.example.PracticaSpringBoot2023.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "t_employee")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "firstname")
     private String firstName;
+
+    @Column(name = "lastname")
     private String lastName;
+
+    @Column(name = "monthly_salary")
     private int salary;
+
+    @ManyToOne
+    @JoinColumn(name = "id_department")
+    private Department department;
 
     public Employee() {
 
@@ -57,5 +73,21 @@ public class Employee {
                 ", name='" + firstName + '\'' +
                 ", salary=" + salary +
                 '}';
+    }
+
+    public String getDepartmentCode() {
+        return department.getCode();
+    }
+
+    public String getDepartmentName() {
+        return department.getName();
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
