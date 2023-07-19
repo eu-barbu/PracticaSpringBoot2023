@@ -1,11 +1,17 @@
 package com.example.PracticaSpringBoot2023.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
 @Table(name = "t_department")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Department {
 
     @Id
@@ -20,15 +26,6 @@ public class Department {
 
     @OneToMany(mappedBy = "department")
     private List<Employee> employeeList;
-
-    public Department() {
-    }
-
-    public Department(int id, String code, String name) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-    }
 
     public int getId() {
         return id;

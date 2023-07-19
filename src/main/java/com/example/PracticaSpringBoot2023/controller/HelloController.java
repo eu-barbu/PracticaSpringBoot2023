@@ -1,6 +1,6 @@
 package com.example.PracticaSpringBoot2023.controller;
 
-import com.example.PracticaSpringBoot2023.model.Employee;
+import com.example.PracticaSpringBoot2023.dto.EmployeeOverviewDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +33,9 @@ public class HelloController {
 
     @GetMapping(value = "/employees")
     @ResponseBody
-    public List<Employee> listEmployees() {
-        Employee e1 = new Employee(1, "George", "Popescu", 1500);
-        Employee e2 = new Employee(2, "Maria", "Georgescu", 1750);
-
+    public List<EmployeeOverviewDto> listEmployees() {
+        EmployeeOverviewDto e1 = new EmployeeOverviewDto(1, "George", "Popescu", 1500, "ABC1234", "Accounting");
+        EmployeeOverviewDto e2 = new EmployeeOverviewDto(2, "Maria", "Georgescu", 1750, "XYZ1234", "Logistics");
         return List.of(e1, e2); //same as defining a new ArrayList and adding elements to it.
     }
 

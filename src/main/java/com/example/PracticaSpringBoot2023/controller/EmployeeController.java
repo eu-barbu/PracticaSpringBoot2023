@@ -1,11 +1,15 @@
 package com.example.PracticaSpringBoot2023.controller;
 
-import com.example.PracticaSpringBoot2023.model.Employee;
-import com.example.PracticaSpringBoot2023.reposiyoty.EmployeeRepository;
+import com.example.PracticaSpringBoot2023.dto.EmployeeFormDto;
+import com.example.PracticaSpringBoot2023.dto.EmployeeOverviewDto;
+import com.example.PracticaSpringBoot2023.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -13,11 +17,11 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService;
 
     @GetMapping(value = "/employeeOverview")
     public String index(Model model) {
-        List<Employee> employeeList = employeeRepository.findAll();
+        List<EmployeeOverviewDto> employeeList = employeeService.getAllEmployees();
         model.addAttribute("employeeList", employeeList);
 
         return "employeeOverview";
@@ -25,26 +29,21 @@ public class EmployeeController {
 
     @GetMapping(value = "/employeeForm")
     public String getEmployeeForm(Model model) {
-        model.addAttribute("employee", new Employee());
+        model.addAttribute("employee", new EmployeeFormDto());
         return "employeeForm";
     }
 
     @PostMapping(value = "/submitEmployee")
-    public String submitEmployee(@ModelAttribute("employee") Employee employee, Model model) {
-        employeeRepository.save(employee);
+    public String submitEmployee(@ModelAttribute("employee") EmployeeFormDto employee, Model model) {
+        employee.setDepartmentId(1);
+        employeeService.saveEmployee(employee);
         return "redirect:/employeeOverview";
     }
 
     @GetMapping(value = "/deleteEmployee")
     public String submitEmployee(@RequestParam("id") int employeeId) {
-        employeeRepository.deleteById(employeeId);
+        employeeService.deleteEmployee(employeeId);
         return "redirect:/employeeOverview";
-    }
-
-    @GetMapping(value = "/findEmployee")
-    @ResponseBody
-    public Employee findEmployee(@RequestParam("id") int employeeId) {
-        return employeeRepository.findById(employeeId).get();
     }
 
 }

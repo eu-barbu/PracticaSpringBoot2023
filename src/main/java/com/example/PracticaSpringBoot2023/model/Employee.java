@@ -1,9 +1,15 @@
 package com.example.PracticaSpringBoot2023.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "t_employee")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Employee {
 
     @Id
@@ -23,16 +29,6 @@ public class Employee {
     @JoinColumn(name = "id_department")
     private Department department;
 
-    public Employee() {
-
-    }
-
-    public Employee(int id, String firstName, String lastName, int salary) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.salary = salary;
-    }
 
     public int getId() {
         return id;
