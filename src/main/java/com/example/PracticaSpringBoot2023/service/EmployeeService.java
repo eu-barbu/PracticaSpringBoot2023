@@ -4,7 +4,7 @@ import com.example.PracticaSpringBoot2023.dto.EmployeeFormDto;
 import com.example.PracticaSpringBoot2023.dto.EmployeeOverviewDto;
 import com.example.PracticaSpringBoot2023.mapper.EmployeeMapper;
 import com.example.PracticaSpringBoot2023.model.Employee;
-import com.example.PracticaSpringBoot2023.reposiyoty.EmployeeRepository;
+import com.example.PracticaSpringBoot2023.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

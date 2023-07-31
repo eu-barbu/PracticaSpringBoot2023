@@ -1,4 +1,4 @@
-package com.example.PracticaSpringBoot2023.reposiyoty;
+package com.example.PracticaSpringBoot2023.repository;
 
 import com.example.PracticaSpringBoot2023.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -4,6 +4,7 @@ import com.example.PracticaSpringBoot2023.dto.EmployeeFormDto;
 import com.example.PracticaSpringBoot2023.dto.EmployeeOverviewDto;
 import com.example.PracticaSpringBoot2023.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,13 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class EmployeeController {
+public class EmployeeController extends BaseController {
 
     @Autowired
     private EmployeeService employeeService;
 
     @GetMapping(value = "/employeeOverview")
-    public String index(Model model) {
+    public String index(Model model, Authentication authentication) {
+        authentication.getPrincipal();
+        addUserToModel(model, authentication);
         List<EmployeeOverviewDto> employeeList = employeeService.getAllEmployees();
         model.addAttribute("employeeList", employeeList);
 

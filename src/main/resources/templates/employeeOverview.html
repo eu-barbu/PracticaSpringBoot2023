@@ -13,6 +13,19 @@
         <h3>Employee Overview</h3>
     </div>
 
+    <div>
+        <span th:text="${userName}"></span>
+
+        <span th:if="${isAdmin}">
+            Adminstrator
+        </span>
+
+        <span th:unless="${isAdmin}">
+            User
+        </span>
+    </div>
+
+
     <div class="row col-6">
         <table class="table table-bordered table-striped">
             <thead>
